@@ -1,1 +1,276 @@
-# professor
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biografia com Carrossel</title>
+  <style>
+    body {
+      background: #fce4ec;
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      width: 100vw;
+      gap: 48px;
+      padding-left: 7vw;
+      box-sizing: border-box;
+    }
+    .biography-box {
+      background: #fff;
+      border: 2.5px solid #ce93d8;
+      border-radius: 20px;
+      max-width: 420px;
+      min-width: 260px;
+      width: 32vw;
+      padding: 38px 30px 32px 30px;
+      box-shadow: 0 4px 18px 0 rgba(206,147,216,0.14);
+      color: #4b0082;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .biography-box h2 {
+      margin-top: 0;
+      color: #ab47bc;
+      margin-bottom: 18px;
+      font-size: 2em;
+      border-bottom: 2px solid #ce93d8;
+      padding-bottom: 10px;
+      width: 100%;
+      text-align: left;
+    }
+    .biography-box p {
+      font-size: 1.17em;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .speak-btn {
+      background: #ab47bc;
+      color: #fff;
+      border: none;
+      border-radius: 22px;
+      padding: 10px 32px;
+      font-size: 1.07em;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 2px 7px 0 rgba(206,147,216,0.12);
+    }
+    .speak-btn:hover, .speak-btn:focus {
+      background: #6d28d9;
+      outline: none;
+    }
+    .carousel-box {
+      background: #fff;
+      border: 2.5px solid #ce93d8;
+      border-radius: 20px;
+      box-shadow: 0 4px 18px 0 rgba(206,147,216,0.10);
+      padding: 28px 18px 24px 18px;
+      width: 350px;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .carousel-container {
+      position: relative;
+      width: 300px;
+      height: 190px;
+      overflow: hidden;
+      border-radius: 15px;
+      background: #f3e5f5;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-images {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+    }
+    .carousel-images img {
+      min-width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f3e5f5;
+      display: block;
+      border-radius: 15px;
+    }
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #ab47bc;
+      color: white;
+      border: none;
+      padding: 9px 14px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 1.15em;
+      transition: 0.2s, transform 0.1s;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.92;
+    }
+    .carousel-nav:hover, .carousel-nav:focus {
+      background: #6d28d9;
+      transform: scale(1.10) translateY(-50%);
+      outline: none;
+    }
+    .carousel-nav.prev { left: 6px; }
+    .carousel-nav.next { right: 6px; }
+    .carousel-dots {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      width: 100%;
+    }
+    .dot {
+      width: 11px;
+      height: 11px;
+      background: #ce93d8;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #ab47bc;
+      transition: 0.3s, transform 0.3s;
+    }
+    .dot.active {
+      background: #ab47bc;
+      transform: scale(1.16);
+    }
+    @media (max-width: 1100px) {
+      .main-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 24px;
+        padding: 24px 0 0 0;
+      }
+      .biography-box, .carousel-box {
+        max-width: 94vw;
+        width: 97vw;
+      }
+      .carousel-container { width: 94vw; max-width: 320px; }
+    }
+    @media (max-width: 650px) {
+      .biography-box { padding: 16px 3vw 13px 3vw; }
+      .carousel-box { padding: 12px 2vw 8px 2vw; }
+      .carousel-container { height: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="biography-box" id="biografia">
+      <h2>Biografia do Professor</h2>
+      <p>Professor Antônio Timóteo da Silva Gervasi tem cinquenta e quatro anos. Desde criança, ele gostava de História e decidiu que queria ser professor.</p>
+      <p>Depois de muita dedicação e estudo, formou-se em História, Geografia e Pedagogia na Faculdade de Paranaguá, UNESPAR. Começou a dar aulas com vinte e dois anos.</p>
+      <p>Um dos desafios enfrentados em sala é a falta de comprometimento e educação dos alunos. Ele tenta resolver isso com diálogo, mas às vezes adota uma postura mais séria.</p>
+      <p>Em dois mil e vinte e um, começou a dar aulas no Colégio Instituto.</p>
+      <button type="button" class="speak-btn" id="lerTudo" aria-label="Ler Biografia e Fotos">🔊 Ler Biografia e Fotos</button>
+    </div>
+    <div class="carousel-box">
+      <div class="carousel-container" aria-label="Carrossel de fotos do professor" role="region" tabindex="0">
+        <div class="carousel-images" id="carouselImgs" aria-live="polite">
+          <img src="D.pedro2.jpg" alt="Professor Antônio Gervasi em sala de aula" />
+          <img src="D.pedrovelho.jpg" alt="Professor Antônio Gervasi interagindo com alunos" />
+          <img src="D.predrp2.jfif" alt="Professor Antônio Gervasi em evento escolar" />
+        </div>
+        <button class="carousel-nav prev" aria-label="Foto anterior" tabindex="0">&lt;</button>
+        <button class="carousel-nav next" aria-label="Próxima foto" tabindex="0">&gt;</button>
+      </div>
+      <div class="carousel-dots" aria-label="Navegação do carrossel"></div>
+    </div>
+  </div>
+  <script>
+    // Carrossel automático e controlável
+    const carouselImagesContainer = document.querySelector('.carousel-images');
+    const images = document.querySelectorAll('.carousel-images img');
+    const prevButton = document.querySelector('.carousel-nav.prev');
+    const nextButton = document.querySelector('.carousel-nav.next');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    let currentSlide = 0;
+    const totalSlides = images.length;
+    let intervalId;
+    const slideIntervalTime = 3500;
+
+    function showSlide(index) {
+      if (index >= totalSlides) currentSlide = 0;
+      else if (index < 0) currentSlide = totalSlides - 1;
+      else currentSlide = index;
+      carouselImagesContainer.style.transform = `translateX(${-currentSlide * 100}%)`;
+      updateDots();
+      images.forEach((img, i) => img.setAttribute('aria-hidden', i !== currentSlide));
+    }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    function startCarousel() {
+      stopCarousel();
+      intervalId = setInterval(nextSlide, slideIntervalTime);
+    }
+    function stopCarousel() { clearInterval(intervalId); }
+    function createDots() {
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.setAttribute('role', 'button');
+        dot.setAttribute('aria-label', `Ir para foto ${i + 1}`);
+        dot.setAttribute('tabindex', '0');
+        dot.addEventListener('click', () => { showSlide(i); stopCarousel(); });
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { showSlide(i); stopCarousel(); }
+        });
+        dotsContainer.appendChild(dot);
+      }
+      updateDots();
+    }
+    function updateDots() {
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+    }
+    prevButton.addEventListener('click', () => { prevSlide(); stopCarousel(); });
+    nextButton.addEventListener('click', () => { nextSlide(); stopCarousel(); });
+    document.querySelector('.carousel-container').addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { prevSlide(); stopCarousel(); }
+      if (e.key === 'ArrowRight') { nextSlide(); stopCarousel(); }
+      if (e.key === ' ') { stopCarousel(); }
+    });
+    createDots();
+    showSlide(0);
+    startCarousel();
+
+    // Leitor de tela (SpeechSynthesis)
+    function speakText(text) {
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const utter = new window.SpeechSynthesisUtterance(text);
+      utter.lang = 'pt-BR';
+      utter.rate = 1.05;
+      window.speechSynthesis.speak(utter);
+    }
+    document.getElementById('lerTudo').addEventListener('click', () => {
+      let texto = '';
+      texto += document.querySelector('.biography-box h2').innerText + '. ';
+      document.querySelectorAll('.biography-box p').forEach(p => { texto += p.innerText + ' '; });
+      texto += 'Fotos: ';
+      images.forEach((img, i) => { texto += `Foto ${i + 1}: ${img.alt}. `; });
+      speakText(texto);
+    });
+  </script>
+</body>
+</html>
