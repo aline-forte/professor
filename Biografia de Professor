@@ -3,14 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biografia com Carrossel</title>
+  <title>Biografia do Professor</title>
   <style>
+    :root {
+      --pastel-yellow: #fffde9;
+      --pastel-border: #ffe082;
+      --primary: #e1b53a;
+      --active: #ffe082;
+      --text: #3e3e20;
+      --accent: #fff7c2;
+      --shadow: 0 4px 18px 0 rgba(231,181,58,0.09);
+      --dark-bg: #24221b;
+      --dark-accent: #2d2c22;
+      --dark-primary: #ffd54f;
+      --dark-text: #ffffff;
+    }
+
     body {
-      background: #fce4ec;
+      background: var(--pastel-yellow);
       margin: 0;
       min-height: 100vh;
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
     }
+
+    /* Menu inicial - cartão moderno */
+    .menu-inicial {
+      position: fixed;
+      inset: 0;
+      background: var(--pastel-yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      min-height: 100vh;
+      transition: background 0.3s;
+    }
+
+    .menu-card {
+      background: var(--accent);
+      border: none;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px 0 rgba(231,181,58,0.16);
+      padding: 56px 52px 44px 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 300px;
+      max-width: 98vw;
+      gap: 0;
+      position: relative;
+      animation: fadein .55s;
+    }
+
+    @keyframes fadein {
+      0% { opacity: 0; transform: scale(0.97);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+
+    .menu-card p {
+      font-size: 1.21em;
+      margin-bottom: 38px;
+      color: var(--text);
+      text-align: center;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .menu-btns {
+      display: flex;
+      gap: 28px;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+
+    .menu-btn {
+      background: var(--primary);
+      color: var(--text);
+      border: none;
+      border-radius: 15px;
+      padding: 17px 40px;
+      font-size: 1.19em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s, outline 0.15s;
+      box-shadow: 0 2px 8px 0 rgba(231,181,58,0.13);
+      outline: none;
+      letter-spacing: 0.3px;
+    }
+
+    .menu-btn:focus, .menu-btn:hover {
+      background: var(--active);
+      color: var(--text);
+      box-shadow: 0 2px 18px 0 rgba(231,181,58,0.22);
+      outline: 2px solid var(--primary);
+    }
+
+    /* Botão Voltar */
+    .voltar-bar {
+      width: 100vw;
+      display: flex;
+      align-items: flex-start;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 80;
+      pointer-events: none;
+      height: 0;
+    }
+
+    .voltar-btn {
+      pointer-events: auto;
+      margin: 18px 0 0 18px;
+      background: var(--primary);
+      color: var(--text);
+      border: none;
+      border-radius: 10px;
+      padding: 10px 28px 10px 23px;
+      font-size: 1.08em;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px 0 rgba(231,181,58,0.10);
+      transition: background 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .voltar-btn:hover, .voltar-btn:focus {
+      background: var(--active);
+      outline: none;
+    }
+
+    .voltar-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--text);
+      margin-right: 3px;
+    }
+
+    /* Conteúdo principal */
     .main-container {
       display: flex;
       flex-direction: row;
@@ -21,40 +156,47 @@
       gap: 48px;
       padding-left: 7vw;
       box-sizing: border-box;
+      transition: opacity 0.3s;
     }
+
     .biography-box {
-      background: #fff;
-      border: 2.5px solid #ce93d8;
-      border-radius: 20px;
+      background: var(--accent);
+      border: 2px solid var(--primary);
+      border-radius: 24px;
       max-width: 420px;
       min-width: 260px;
       width: 32vw;
       padding: 38px 30px 32px 30px;
-      box-shadow: 0 4px 18px 0 rgba(206,147,216,0.14);
-      color: #4b0082;
+      box-shadow: var(--shadow);
+      color: var(--text);
       text-align: left;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
     }
+
     .biography-box h2 {
       margin-top: 0;
-      color: #ab47bc;
+      color: var(--primary);
       margin-bottom: 18px;
       font-size: 2em;
-      border-bottom: 2px solid #ce93d8;
+      border-bottom: 2px solid var(--pastel-border);
       padding-bottom: 10px;
       width: 100%;
       text-align: left;
+      font-weight: 600;
     }
+
     .biography-box p {
       font-size: 1.17em;
       line-height: 1.7;
       margin-bottom: 18px;
+      color: var(--text);
     }
+
     .speak-btn {
-      background: #ab47bc;
-      color: #fff;
+      background: var(--primary);
+      color: var(--text);
       border: none;
       border-radius: 22px;
       padding: 10px 32px;
@@ -62,18 +204,20 @@
       font-weight: bold;
       margin-top: 10px;
       cursor: pointer;
-      transition: 0.2s;
-      box-shadow: 0 2px 7px 0 rgba(206,147,216,0.12);
+      transition: background 0.2s;
+      box-shadow: 0 2px 7px 0 rgba(251,192,45,0.12);
     }
+
     .speak-btn:hover, .speak-btn:focus {
-      background: #6d28d9;
+      background: var(--active);
       outline: none;
     }
+
     .carousel-box {
-      background: #fff;
-      border: 2.5px solid #ce93d8;
+      background: var(--accent);
+      border: 2px solid var(--primary);
       border-radius: 20px;
-      box-shadow: 0 4px 18px 0 rgba(206,147,216,0.10);
+      box-shadow: var(--shadow);
       padding: 28px 18px 24px 18px;
       width: 350px;
       min-width: 220px;
@@ -81,38 +225,42 @@
       flex-direction: column;
       align-items: center;
     }
+
     .carousel-container {
       position: relative;
       width: 300px;
       height: 190px;
       overflow: hidden;
       border-radius: 15px;
-      background: #f3e5f5;
+      background: var(--pastel-yellow);
       margin-bottom: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .carousel-images {
       display: flex;
       width: 100%;
       height: 100%;
       transition: transform 0.5s cubic-bezier(.4,0,.2,1);
     }
+
     .carousel-images img {
       min-width: 100%;
       height: 100%;
       object-fit: contain;
-      background: #f3e5f5;
+      background: var(--pastel-yellow);
       display: block;
       border-radius: 15px;
     }
+
     .carousel-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: #ab47bc;
-      color: white;
+      background: var(--primary);
+      color: var(--text);
       border: none;
       padding: 9px 14px;
       cursor: pointer;
@@ -125,11 +273,13 @@
       justify-content: center;
       opacity: 0.92;
     }
+
     .carousel-nav:hover, .carousel-nav:focus {
-      background: #6d28d9;
+      background: var(--active);
       transform: scale(1.10) translateY(-50%);
       outline: none;
     }
+
     .carousel-nav.prev { left: 6px; }
     .carousel-nav.next { right: 6px; }
     .carousel-dots {
@@ -139,42 +289,208 @@
       justify-content: center;
       width: 100%;
     }
+
     .dot {
       width: 11px;
       height: 11px;
-      background: #ce93d8;
+      background: var(--pastel-border);
       border-radius: 50%;
       cursor: pointer;
-      border: 1px solid #ab47bc;
+      border: 1px solid var(--primary);
       transition: 0.3s, transform 0.3s;
     }
+
     .dot.active {
-      background: #ab47bc;
+      background: var(--primary);
       transform: scale(1.16);
     }
+
+    /* Modal Configurações */
+    .settings-modal-bg {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(231,181,58,0.18);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.22s;
+    }
+
+    .settings-modal {
+      background: var(--accent);
+      border: 2px solid var(--primary);
+      border-radius: 18px;
+      padding: 32px 28px 24px 28px;
+      box-shadow: var(--shadow);
+      color: var(--text);
+      min-width: 260px;
+      max-width: 92vw;
+      text-align: center;
+      position: relative;
+      font-size: 1.18em;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    }
+
+    .settings-modal h3 {
+      margin-top: 0;
+      color: var(--primary);
+      margin-bottom: 22px;
+    }
+
+    .settings-modal label {
+      font-size: 1.09em;
+      color: var(--text);
+      margin-left: 8px;
+    }
+
+    .settings-modal .close-btn {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: var(--primary);
+      color: var(--text);
+      border: none;
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 1.4em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .settings-modal .close-btn:hover, .settings-modal .close-btn:focus {
+      background: var(--active);
+      outline: none;
+    }
+
+
+    /* Modo escuro pastel */
+    body.dark-mode {
+      background: var(--dark-bg) !important;
+      color: var(--dark-text) !important;
+    }
+
+    body.dark-mode .menu-inicial {
+      background: var(--dark-bg) !important;
+    }
+
+    body.dark-mode .menu-card,
+    body.dark-mode .biography-box,
+    body.dark-mode .carousel-box,
+    body.dark-mode .settings-modal {
+      background: var(--dark-accent) !important;
+      color: var(--dark-text) !important;
+      border-color: var(--dark-primary) !important;
+      box-shadow: 0 4px 18px 0 rgba(255,213,79,0.15) !important;
+    }
+
+    body.dark-mode .menu-card p,
+    body.dark-mode .biography-box p,
+    body.dark-mode .biography-box h2,
+    body.dark-mode .settings-modal h3,
+    body.dark-mode .settings-modal label,
+    body.dark-mode .voltar-btn,
+    body.dark-mode .carousel-box,
+    body.dark-mode .carousel-nav,
+    body.dark-mode .speak-btn {
+      color: var(--dark-text) !important;
+    }
+
+    body.dark-mode .carousel-container {
+      background: var(--dark-bg) !important;
+    }
+
+    body.dark-mode .carousel-images img {
+      background: var(--dark-bg) !important;
+    }
+
+    body.dark-mode .carousel-nav,
+    body.dark-mode .settings-modal .close-btn,
+    body.dark-mode .menu-btn,
+    body.dark-mode .voltar-btn {
+      background: var(--dark-primary) !important;
+      color: var(--dark-text) !important;
+    }
+
+    body.dark-mode .dot {
+      background: var(--dark-primary) !important;
+      border-color: var(--dark-primary) !important;
+    }
+
+    body.dark-mode .dot.active {
+      background: #ffeb3b !important;
+    }
+
+    body.dark-mode .speak-btn {
+      background: var(--dark-primary) !important;
+      color: var(--dark-text) !important;
+    }
+
+    body.dark-mode .settings-modal-bg {
+      background: rgba(60, 60, 27, 0.5) !important;
+    }
+
     @media (max-width: 1100px) {
       .main-container {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
         gap: 24px;
-        padding: 24px 0 0 0;
-      }
+        padding: 80px 0 0 0;
+      
+
       .biography-box, .carousel-box {
         max-width: 94vw;
         width: 97vw;
       }
+
       .carousel-container { width: 94vw; max-width: 320px; }
+      .menu-card { padding: 30px 2vw 28px 2vw; }
     }
+
     @media (max-width: 650px) {
-      .biography-box { padding: 16px 3vw 13px 3vw; }
-      .carousel-box { padding: 12px 2vw 8px 2vw; }
+      .biography-box { padding: 14px 2vw 12px 2vw; }
+      .carousel-box { padding: 8px 2vw 6px 2vw; }
       .carousel-container { height: 140px; }
+      .menu-card { padding: 12px 1vw 10px 1vw; }
     }
+
   </style>
 </head>
 <body>
-  <div class="main-container">
+  <!-- Menu Inicial -->
+  <div class="menu-inicial" id="menuInicial">
+    <div class="menu-card">
+      <p>Bem-vindo! Escolha uma opção para começar:</p>
+      <div class="menu-btns">
+        <button class="menu-btn" id="btnEntrar">Entrar</button>
+        <button class="menu-btn" id="btnConfig">Configurações</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão Voltar -->
+  <div class="voltar-bar" id="voltarBar" style="display:none;">
+    <button class="voltar-btn" id="btnVoltar" aria-label="Voltar ao menu inicial">
+      <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      Voltar
+    </button>
+  </div>
+
+  <!-- Modal Configurações -->
+  <div class="settings-modal-bg" id="configModalBg" aria-modal="true" aria-labelledby="settingsTitle" tabindex="-1">
+    <div class="settings-modal" id="settingsModal">
+      <button class="close-btn" id="closeConfigBtn" aria-label="Fechar Configurações">&times;</button>
+      <h3 id="settingsTitle">Configurações</h3>
+      <div>
+        <input type="checkbox" id="darkModeToggle" />
+        <label for="darkModeToggle">Modo Escuro Pastel</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo principal (biografia + carrossel) -->
+  <div class="main-container" id="mainContent" style="display: none;">
     <div class="biography-box" id="biografia">
       <h2>Biografia do Professor</h2>
       <p>Professor Antônio Timóteo da Silva Gervasi tem cinquenta e quatro anos. Desde criança, ele gostava de História e decidiu que queria ser professor.</p>
@@ -183,6 +499,7 @@
       <p>Em dois mil e vinte e um, começou a dar aulas no Colégio Instituto.</p>
       <button type="button" class="speak-btn" id="lerTudo" aria-label="Ler Biografia e Fotos">🔊 Ler Biografia e Fotos</button>
     </div>
+
     <div class="carousel-box">
       <div class="carousel-container" aria-label="Carrossel de fotos do professor" role="region" tabindex="0">
         <div class="carousel-images" id="carouselImgs" aria-live="polite">
@@ -190,6 +507,7 @@
           <img src="D.pedrovelho.jpg" alt="Professor Antônio Gervasi interagindo com alunos" />
           <img src="D.predrp2.jfif" alt="Professor Antônio Gervasi em evento escolar" />
         </div>
+
         <button class="carousel-nav prev" aria-label="Foto anterior" tabindex="0">&lt;</button>
         <button class="carousel-nav next" aria-label="Próxima foto" tabindex="0">&gt;</button>
       </div>
@@ -197,7 +515,7 @@
     </div>
   </div>
   <script>
-    // Carrossel automático e controlável
+    // Carrossel automático e controlável//
     const carouselImagesContainer = document.querySelector('.carousel-images');
     const images = document.querySelectorAll('.carousel-images img');
     const prevButton = document.querySelector('.carousel-nav.prev');
@@ -216,12 +534,14 @@
       updateDots();
       images.forEach((img, i) => img.setAttribute('aria-hidden', i !== currentSlide));
     }
+
     function nextSlide() { showSlide(currentSlide + 1); }
     function prevSlide() { showSlide(currentSlide - 1); }
     function startCarousel() {
       stopCarousel();
       intervalId = setInterval(nextSlide, slideIntervalTime);
     }
+
     function stopCarousel() { clearInterval(intervalId); }
     function createDots() {
       dotsContainer.innerHTML = '';
@@ -239,10 +559,12 @@
       }
       updateDots();
     }
+
     function updateDots() {
       const dots = document.querySelectorAll('.dot');
       dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
     }
+
     prevButton.addEventListener('click', () => { prevSlide(); stopCarousel(); });
     nextButton.addEventListener('click', () => { nextSlide(); stopCarousel(); });
     document.querySelector('.carousel-container').addEventListener('keydown', (e) => {
@@ -263,6 +585,7 @@
       utter.rate = 1.05;
       window.speechSynthesis.speak(utter);
     }
+
     document.getElementById('lerTudo').addEventListener('click', () => {
       let texto = '';
       texto += document.querySelector('.biography-box h2').innerText + '. ';
@@ -270,6 +593,67 @@
       texto += 'Fotos: ';
       images.forEach((img, i) => { texto += `Foto ${i + 1}: ${img.alt}. `; });
       speakText(texto);
+    });
+
+    // Menu inicial e navegação
+    const menuInicial = document.getElementById('menuInicial');
+    const mainContent = document.getElementById('mainContent');
+    const btnEntrar = document.getElementById('btnEntrar');
+    const btnConfig = document.getElementById('btnConfig');
+    const voltarBar = document.getElementById('voltarBar');
+    const btnVoltar = document.getElementById('btnVoltar');
+    const configModalBg = document.getElementById('configModalBg');
+    const settingsModal = document.getElementById('settingsModal');
+    const closeConfigBtn = document.getElementById('closeConfigBtn');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    // Função para mostrar conteúdo principal e botão voltar
+    function mostrarConteudo() {
+      menuInicial.style.display = 'none';
+      mainContent.style.display = 'flex';
+      voltarBar.style.display = 'flex';
+    }
+    // Função para voltar ao menu inicial
+    function voltarMenu() {
+      menuInicial.style.display = 'flex';
+      mainContent.style.display = 'none';
+      voltarBar.style.display = 'none';
+      configModalBg.style.display = 'none';
+    }
+    btnEntrar.addEventListener('click', mostrarConteudo);
+    btnConfig.addEventListener('click', () => {
+      configModalBg.style.display = 'flex';
+      settingsModal.focus();
+      darkModeToggle.checked = document.body.classList.contains('dark-mode');
+    });
+    btnVoltar.addEventListener('click', voltarMenu);
+    closeConfigBtn.addEventListener('click', () => {
+      configModalBg.style.display = 'none';
+    });
+    configModalBg.addEventListener('click', (e) => {
+      if (e.target === configModalBg) {
+        configModalBg.style.display = 'none';
+      }
+    });
+    darkModeToggle.addEventListener('change', function () {
+      if (this.checked) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('modoEscuro', 'sim');
+      } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('modoEscuro', 'nao');
+      }
+    });
+    // Persistência do modo escuro
+    if (localStorage.getItem('modoEscuro') === 'sim') {
+      document.body.classList.add('dark-mode');
+      darkModeToggle.checked = true;
+    }
+    // Fecha modal no ESC
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && configModalBg.style.display === 'flex') {
+        configModalBg.style.display = 'none';
+      }
     });
   </script>
   
