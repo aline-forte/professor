@@ -17,18 +17,105 @@
     --scrollbar: #ffe082;
     --scrollbar-thumb: #e1b53a;
     --form-label: #584800;
+    --btn-gradient: linear-gradient(90deg, #ffd95b, #e1b53a 80%);
     }
-    
+    /* Modo escuro */
+    body.theme-dark {
+    --bg: #1a1917;
+    --primary: #ffe082;
+    --active: #c7a100;
+    --card: #312e1b;
+    --border: #ffe082;
+    --text: #ffe082;
+    --form-bg: #312e1b;
+    --form-header: #2b2820;
+    --form-label: #ffe082;
+    --btn-gradient: linear-gradient(90deg, #c7a100, #ffe082 80%);
+    --scrollbar: #312e1b;
+    --scrollbar-thumb: #ffe082;
+    }
+    /* Modo daltônico geral */
+    body.theme-daltonic {
+    --bg: #f6f6f6;
+    --primary: #0072b1;
+    --active: #ffe082;
+    --card: #e8f6ff;
+    --border: #0072b1;
+    --text: #002e4c;
+    --form-bg: #e8f6ff;
+    --form-header: #b7dcfa;
+    --form-label: #0072b1;
+    --btn-gradient: linear-gradient(90deg, #68c2ff, #0072b1 80%);
+    --scrollbar: #b7dcfa;
+    --scrollbar-thumb: #0072b1;
+    }
+    /* Protanopia */
+    body.theme-protanopia {
+    --bg: #fffefd;
+    --primary: #00aedb;
+    --active: #e6e6e6;
+    --card: #f0f7fa;
+    --border: #00aedb;
+    --text: #24292f;
+    --form-bg: #f0f7fa;
+    --form-header: #b3e5fc;
+    --form-label: #00aedb;
+    --btn-gradient: linear-gradient(90deg, #b3e5fc, #00aedb 80%);
+    --scrollbar: #b3e5fc;
+    --scrollbar-thumb: #00aedb;
+    }
+    /* Deuteranopia */
+    body.theme-deuteranopia {
+    --bg: #f5fdf7;
+    --primary: #ffb300;
+    --active: #e6e6e6;
+    --card: #f8f9f5;
+    --border: #ffb300;
+    --text: #24292f;
+    --form-bg: #f8f9f5;
+    --form-header: #ffe082;
+    --form-label: #ffb300;
+    --btn-gradient: linear-gradient(90deg, #ffe082, #ffb300 80%);
+    --scrollbar: #ffe082;
+    --scrollbar-thumb: #ffb300;
+    }
+    /* Tritanopia */
+    body.theme-tritanopia {
+    --bg: #f7fbff;
+    --primary: #e57373;
+    --active: #e6e6e6;
+    --card: #fff0f0;
+    --border: #e57373;
+    --text: #24292f;
+    --form-bg: #fff0f0;
+    --form-header: #ffcdd2;
+    --form-label: #e57373;
+    --btn-gradient: linear-gradient(90deg, #ffcdd2, #e57373 80%);
+    --scrollbar: #ffcdd2;
+    --scrollbar-thumb: #e57373;
+    }
+    /* Modo claro: branco com preto */
+    body.theme-light {
+    --bg: #ffffff;
+    --primary: #222222;
+    --active: #333333;
+    --card: #f3f3f3;
+    --border: #222222;
+    --text: #111111;
+    --form-bg: #fafafa;
+    --form-header: #eeeeee;
+    --form-label: #222222;
+    --btn-gradient: linear-gradient(90deg, #cccccc, #222222 80%);
+    --scrollbar: #eeeeee;
+    --scrollbar-thumb: #222222;
+    }
     body {
     background: var(--bg);
     color: var(--text);
     margin: 0;
     min-height: 100vh;
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-    transition: 0.3s, color 0.3s; 
     }
-
-    /* Layout principal: biografia à esquerda, carrossel à direita, formulário embaixo */
     .main-content {
     display: flex;
     flex-direction: column;
@@ -38,9 +125,135 @@
     box-sizing: border-box;
     padding: 32px 0 0 0;
     gap: 30px;
-    background: var(--bg);
     }
-
+    /* Menu principal bonito */
+    .menu-bar {
+    width: 100vw;
+    background: var(--primary);
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 2px 10px 0 rgba(231,181,58,0.12);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+    }
+    .menu-bar .menu-title {
+    font-size: 1.40em;
+    font-weight: 700;
+    color: var(--text);
+    margin-left: 22px;
+    letter-spacing: 0.8px;
+    }
+    .menu-bar .menu-links {
+    display: flex;
+    gap: 28px;
+    }
+    .menu-bar .menu-links a {
+    font-size: 1.08em;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 7px 0;
+    transition: color 0.16s;
+    cursor: pointer;
+    }
+    .menu-bar .menu-links a:hover {
+    color: #8a6c00;
+    text-decoration: underline;
+    }
+    .menu-bar .settings-btn {
+    background: var(--btn-gradient);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.38em;
+    margin-right: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 7px 0 rgba(231,181,58,0.15);
+    transition: background .19s, transform .18s;
+    position: relative;
+    }
+    .menu-bar .settings-btn:hover {
+    background: var(--active);
+    color: var(--text);
+    transform: scale(1.10);
+    }
+    /* Modal de configurações */
+    .settings-modal {
+    position: fixed;
+    top: 80px;
+    right: 28px;
+    min-width: 270px;
+    max-width: 96vw;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 5px 22px 0 rgba(231,181,58,0.23);
+    display: none;
+    z-index: 101;
+    flex-direction: column;
+    padding: 28px 24px 22px 24px;
+    animation: fadeIn .32s;
+    }
+    @keyframes fadeIn {
+    0% { opacity: 0; transform: scale(.9);}
+    100% { opacity: 1; transform: scale(1);}
+    }
+    .settings-modal.show {
+    display: flex;
+    }
+    .settings-modal h3 {
+    font-size: 1.18em;
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 14px;
+    }
+    .settings-modal .theme-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    }
+    .settings-modal .theme-btn {
+    background: var(--btn-gradient);
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    padding: 10px 0;
+    font-size: 1.09em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 7px 0 rgba(231,181,58,0.13);
+    transition: .16s, box-shadow .19s;
+    margin-bottom: 3px;
+    }
+    .settings-modal .theme-btn.active {
+    background: var(--primary);
+    color: var(--text);
+    box-shadow: 0 3px 13px 0 rgba(231,181,58,0.19);
+    }
+    .settings-modal .theme-btn:focus {
+    outline: 2px solid var(--active);
+    }
+    .settings-modal .close-btn {
+    background: transparent;
+    color: #ab8500;
+    border: none;
+    font-size: 1.51em;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 12px;
+    }
     .top-content {
     display: flex;
     flex-direction: row;
@@ -49,8 +262,8 @@
     width: 100%;
     gap: 40px;
     max-width: 1080px;
+    margin-top: 62px;
     }
-
     .biography-box {
     background: var(--card);
     border: 2px solid var(--border);
@@ -64,7 +277,6 @@
     flex-direction: column;
     align-items: flex-start;
     }
-
     .biography-box h2 {
     color: var(--primary);
     border-bottom: 2px solid var(--border);
@@ -74,13 +286,11 @@
     font-weight: 700;
     padding-bottom: 9px;
     }
-
     .biography-box p {
     font-size: 1.10em;
     line-height: 1.7;
     margin-bottom: 18px;
     }
-
     .speak-btn {
     background: var(--primary);
     color: var(--text);
@@ -94,106 +304,158 @@
     transition: 0.2s;
     box-shadow: 0 2px 7px 0 rgba(231,181,58,0.12);
     }
-
     .speak-btn:hover, .speak-btn:focus {
     background: var(--active);
     outline: none;
     }
-
     .carousel-box {
     background: var(--card);
     border: 2px solid var(--border);
     border-radius: 22px;
     box-shadow: 0 4px 18px 0 rgba(231,181,58,0.10);
     padding: 24px 18px 18px 18px;
-    width: 340px;
+    width: 370px;
     min-width: 220px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 0;
     }
-
+    .carousel-box h2 {
+        color: var(--primary);
+        font-size: 1.4em;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
     .carousel-container {
     position: relative;
-    width: 290px;
+    width: 280px;
     height: 180px;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 16px;
     background: var(--form-bg);
-    margin-bottom: 15px;
+    box-shadow: 0 3px 18px 0 rgba(231,181,58,0.10);
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 14px;
     }
-
     .carousel-images {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+    transition: transform 0.6s cubic-bezier(.4,0,.2,1);
     }
-
     .carousel-images img {
     min-width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     background: var(--form-bg);
     display: block;
-    border-radius: 15px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px 0 rgba(231,181,58,0.13);
     }
-
-    .carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--primary);
-    color: var(--text);
-    border: none;
-    padding: 9px 14px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 1.15em;
-    transition: 0.2s, transform 0.1s;
-    z-index: 2;
+    /* Barra de navegação */
+    .carousel-controls {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.92;
+    gap: 18px;
+    margin: 0;
+    width: 100%;
     }
-
-    .carousel-nav.prev { left: 6px; }
-    .carousel-nav.next { right: 6px; }
+    .carousel-nav {
+    background: var(--primary);
+    color: var(--text);
+    border: none;
+    border-radius: 50%;
+    padding: 10px 13px;
+    font-size: 1.45em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.19s, transform 0.1s;
+    box-shadow: 0 2px 7px 0 rgba(231,181,58,0.13);
+    opacity: 0.97;
+    }
     .carousel-nav:hover, .carousel-nav:focus {
     background: var(--active);
-    transform: scale(1.10) translateY(-50%);
     outline: none;
+    transform: scale(1.14);
     }
-
-    .carousel-dots {
-    margin-top: 6px;
+    /* Botão autoplay bonito */
+    .carousel-autoplay-btn {
+    background: var(--btn-gradient);
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    padding: 0 30px;
+    min-width: 68px;
+    height: 42px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 10px 0 rgba(231,181,58,0.18);
     display: flex;
-    gap: 7px;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.5px;
+    transition: .21s cubic-bezier(.4,.3,.2,.8), box-shadow .19s;
+    position: relative;
+    overflow: hidden;
+    }
+    .carousel-autoplay-btn:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background: rgba(225,181,58,0.21);
+        transition: width .3s;
+        border-radius: 40px;
+        z-index: 0;
+    }
+    .carousel-autoplay-btn:hover:before {
+        width: 100%;
+    }
+    .carousel-autoplay-btn:hover, .carousel-autoplay-btn:focus {
+    background: var(--active);
+    color: var(--text);
+    outline: none;
+    box-shadow: 0 4px 13px 0 rgba(231,181,58,0.19);
+    }
+    .carousel-autoplay-btn span {
+    position: relative;
+    z-index: 1;
+    font-size: 1.26em;
+    margin-right: 9px;
+    transition: transform .20s;
+    display: inline-block;
+    }
+    .carousel-autoplay-btn.play span { transform: rotate(4deg); }
+    .carousel-autoplay-btn.pause span { transform: rotate(-4deg); }
+    .carousel-dots {
+    margin-top: 9px;
+    display: flex;
+    gap: 8px;
     justify-content: center;
     width: 100%;
     }
-
     .dot {
-    width: 11px;
-    height: 11px;
+    width: 13px;
+    height: 13px;
     background: var(--border);
     border-radius: 50%;
     cursor: pointer;
-    border: 1.2px solid var(--primary);
-    transition: 0.3s, transform 0.3s;
+    border: 1.5px solid var(--primary);
+    transition: 0.32s, transform 0.26s;
     }
-
     .dot.active {
     background: var(--primary);
-    transform: scale(1.16);
+    transform: scale(1.18);
+    box-shadow: 0 3px 11px 0 rgba(225,181,58,0.13);
     }
-
-    /* Formulário História */
+    /* Formulário */
     .form-historia-section {
     width: 100%;
     display: flex;
@@ -201,7 +463,6 @@
     margin-top: 16px;
     margin-bottom: 20px;
     }
-
     .form-historia {
     background: var(--form-bg);
     box-shadow: 0 2px 18px 0 rgba(231,181,58,0.12);
@@ -215,12 +476,10 @@
     border: 2px solid var(--primary);
     color: var(--text);
     }
-
     .form-historia legend {
     font-size: 1.23em;
     font-weight: 700;
     color: var(--form-label);
-    
     background: var(--form-header);
     border-radius: 10px;
     padding: 7px 18px;
@@ -230,14 +489,12 @@
     box-shadow: 0 1px 8px 0 rgba(231,181,58,0.07);
     letter-spacing: 0.5px;
     }
-
     .form-historia label {
     font-size: 1.11em;
     font-weight: 600;
     margin-bottom: 6px;
     color: var(--form-label);
     }
-
     .form-historia input,
     .form-historia textarea {
     width: 100%;
@@ -253,18 +510,15 @@
     resize: vertical;
     min-height: 36px;
     }
-
     .form-historia textarea {
     min-height: 60px;
     max-height: 180px;
     }
-
     .form-historia input:focus,
     .form-historia textarea:focus {
     outline: none;
     border-color: #c7a100;
     }
-
     .form-historia button {
     margin-top: 16px;
     background: var(--primary);
@@ -278,13 +532,11 @@
     transition: 0.18s;
     box-shadow: 0 2px 7px 0 rgba(231,181,58,0.13);
     }
-
     .form-historia button:hover,
     .form-historia button:focus {
     background: #c7a100;
     outline: none;
     }
-
     .form-historia .form-msg {
     margin-top: 12px;
     color: #33691e;
@@ -292,38 +544,33 @@
     font-weight: 600;
     display: none;
     }
-
-    /* Barra de rolagem amarela só na main-content */
     .main-content {
     overflow-y: auto;
     height: 100vh;
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar);
     }
-
     .main-content::-webkit-scrollbar {
     width: 13px;
     background: var(--scrollbar);
     }
-
     .main-content::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
     border-radius: 7px;
     }
-
     @media (max-width: 1020px) {
     .top-content {
         flex-direction: column;
         align-items: center;
         gap: 22px;
+        margin-top: 62px;
     }
-
     .biography-box, .carousel-box {
         width: 95vw;
         max-width: 600px;
     }
+    .carousel-box { min-width: 0; }
     }
-
     @media (max-width: 650px) {
     .biography-box, .carousel-box, .form-historia {
         padding: 14px 2vw 12px 2vw;
@@ -331,17 +578,40 @@
         width: 98vw;
         max-width: 98vw;
     }
-
     .carousel-container { height: 140px; width: 92vw; max-width: 320px; }
     .form-historia { padding: 10px 1vw 10px 1vw; }
+    .carousel-controls { gap: 6px;}
     }
-
 </style>
 </head>
 <body>
+<!-- Menu principal -->
+<div class="menu-bar" role="navigation" aria-label="Menu principal">
+    <div class="menu-title">Site do Professor</div>
+    <div class="menu-links">
+        <a id="linkBiografia" href="#biografia">Biografia</a>
+        <a id="linkFotos" href="#carouselImgs">Fotos</a>
+        <a id="linkFormulario" href="#formulario">Formulário</a>
+    </div>
+    <button class="settings-btn" id="settingsBtn" aria-label="Configurações" tabindex="0">⚙️</button>
+    <div class="settings-modal" id="settingsModal" aria-modal="true" tabindex="-1">
+        <h3>Configurações de Tema</h3>
+        <div class="theme-options">
+            <button class="theme-btn" id="themeLight">Modo Claro</button>
+            <button class="theme-btn" id="themeDark">Modo Escuro</button>
+            <button class="theme-btn" id="themeDaltonic">Modo Daltônico</button>
+            <button class="theme-btn" id="themeProtanopia">Modo Protanopia</button>
+            <button class="theme-btn" id="themeDeuteranopia">Modo Deuteranopia</button>
+            <button class="theme-btn" id="themeTritanopia">Modo Tritanopia</button>
+            <button class="theme-btn" id="themeDefault">Desativar Modo</button>
+        </div>
+        <button class="close-btn" id="closeSettings" aria-label="Fechar configurações">&times;</button>
+    </div>
+</div>
+
 <div class="main-content">
-    <div class="top-content">
-    <div class="biography-box" id="biografia">
+    <div class="top-content" id="biografia">
+    <div class="biography-box">
         <h2>Biografia do Professor</h2>
         <p>Professor Antônio Timóteo da Silva Gervasi tem cinquenta e quatro anos. Desde criança, ele gostava de História e decidiu que queria ser professor.</p>
         <p>Depois de muita dedicação e estudo, formou-se em História, Geografia e Pedagogia na Faculdade de Paranaguá, UNESPAR. Começou a dar aulas com vinte e dois anos.</p>
@@ -350,147 +620,301 @@
         <button type="button" class="speak-btn" id="lerTudo" aria-label="Ler Biografia e Fotos">🔊 Ler Biografia e Fotos</button>
     </div>
 
-    <div class="carousel-box">
-        <div class="carousel-container" aria-label="Carrossel de conteudo historico" role="region" tabindex="0">
-        <div class="carousel-images" id="carouselImgs" aria-live="polite">
-            <img src="legal.webp" alt="Guerra dos canudos" />
-            <img src="D.pedrovelho.jpg" alt="D.pedro2 idoso" />
-            <img src="sei.webp" alt="Martinho Lutero" />
+    <div class="carousel-box" id="carouselImgs">
+        <h2>Fotos</h2>
+        <div class="carousel-container" aria-label="Carrossel de conteúdo histórico" role="region" tabindex="0">
+            <div class="carousel-images" aria-live="polite">
+                <img src="legal.webp" alt="Guerra dos canudos" />
+                <img src="D.pedrovelho.jpg" alt="D. Pedro II idoso" />
+                <img src="sei.webp" alt="Martinho Lutero" />
+            </div>
         </div>
-
-        <button class="carousel-nav prev" aria-label="Foto anterior" tabindex="0">&lt;</button>
-        <button class="carousel-nav next" aria-label="Próxima foto" tabindex="0">&gt;</button>
+        <div class="carousel-controls">
+            <button class="carousel-nav prev" aria-label="Foto anterior" tabindex="0">&lt;</button>
+            <button class="carousel-autoplay-btn pause" id="carouselAutoBtn" aria-label="Ativar/desativar carrossel automático" tabindex="0">
+                <span>⏸️</span> Pausar
+            </button>
+            <button class="carousel-nav next" aria-label="Próxima foto" tabindex="0">&gt;</button>
         </div>
         <div class="carousel-dots" aria-label="Navegação do carrossel"></div>
     </div>
     </div>
 
-    <!-- Formulário de História -->
-    <section class="form-historia-section">
+    <!-- Formulário -->
+    <section class="form-historia-section" id="formulario">
     <form class="form-historia" id="formHistoria" autocomplete="off">
-        <legend>Compartilhe sua experiência ou curiosidade sobre História</legend>
+        <legend>Formulário</legend>
         <label for="nome">Seu nome:</label>
         <input type="text" id="nome" name="nome" maxlength="50" required placeholder="Digite seu nome">
-
         <label for="historia">Conte sua experiência, opinião ou curiosidade sobre História.<br>
         Exemplos: O que você acha importante na matéria? Qual tema você tem mais interesse? Tem alguma dúvida ou sugestão?</label>
         <textarea id="historia" name="historia" maxlength="500" required placeholder="Escreva aqui sua mensagem sobre História..."></textarea>
-
         <button type="submit">Enviar</button>
         <div class="form-msg" id="formMsg"></div>
     </form>
     </section>
 </div>
 <script>
-    // Carrossel automático e controlável //
-    const carouselImagesContainer = document.querySelector('.carousel-images');
-    const images = document.querySelectorAll('.carousel-images img');
-    const prevButton = document.querySelector('.carousel-nav.prev');
-    const nextButton = document.querySelector('.carousel-nav.next');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    let currentSlide = 0;
-    const totalSlides = images.length;
-    let intervalId;
-    const slideIntervalTime = 3500;
+const carouselImagesContainer = document.querySelector('.carousel-images');
+const images = document.querySelectorAll('.carousel-images img');
+const prevButton = document.querySelector('.carousel-nav.prev');
+const nextButton = document.querySelector('.carousel-nav.next');
+const dotsContainer = document.querySelector('.carousel-dots');
+const autoBtn = document.getElementById('carouselAutoBtn');
+let currentSlide = 0;
+const totalSlides = images.length;
+let intervalId = null;
+const slideIntervalTime = 3500;
+let isAuto = true;
 
-    function showSlide(index) {
-    if (index >= totalSlides) currentSlide = 0;
-    else if (index < 0) currentSlide = totalSlides - 1;
-    else currentSlide = index;
-      carouselImagesContainer.style.transform = `translateX(${-currentSlide * 100}%)`;
-    updateDots();
-    images.forEach((img, i) => img.setAttribute('aria-hidden', i !== currentSlide));
-    }
+// Função para atualizar botão bonito
+function updateAutoBtn() {
+if (isAuto) {
+    autoBtn.classList.remove('play');
+    autoBtn.classList.add('pause');
+    autoBtn.innerHTML = '<span>⏸️</span> Pausar';
+} else {
+    autoBtn.classList.remove('pause');
+    autoBtn.classList.add('play');
+    autoBtn.innerHTML = '<span>▶️</span> Reproduzir';
+}
+}
 
-    function nextSlide() { showSlide(currentSlide + 1); }
-    function prevSlide() { showSlide(currentSlide - 1); }
-    function startCarousel() {
-    stopCarousel();
-    intervalId = setInterval(nextSlide, slideIntervalTime);
-    }
-
-    function stopCarousel() { clearInterval(intervalId); }
-    function createDots() {
-    dotsContainer.innerHTML = '';
-    for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        dot.setAttribute('role', 'button');
-        dot.setAttribute('aria-label', `Ir para foto ${i + 1}`);
-        dot.setAttribute('tabindex', '0');
-        dot.addEventListener('click', () => { showSlide(i); stopCarousel(); });
-        dot.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { showSlide(i); stopCarousel(); }
-        });
-
-        dotsContainer.appendChild(dot);
-    }
-
-    updateDots();
-    }
-
-    function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
-    }
-
-    prevButton.addEventListener('click', () => { prevSlide(); stopCarousel(); });
-    nextButton.addEventListener('click', () => { nextSlide(); stopCarousel(); });
-    document.querySelector('.carousel-container').addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') { prevSlide(); stopCarousel(); }
-    if (e.key === 'ArrowRight') { nextSlide(); stopCarousel(); }
-    if (e.key === ' ') { stopCarousel(); }
-    });
-    createDots();
-    showSlide(0);
+function showSlide(index) {
+if (index >= totalSlides) currentSlide = 0;
+else if (index < 0) currentSlide = totalSlides - 1;
+else currentSlide = index;
+  carouselImagesContainer.style.transform = `translateX(${-currentSlide * 100}%)`;
+updateDots();
+images.forEach((img, i) => img.setAttribute('aria-hidden', i !== currentSlide));
+}
+function nextSlide() { showSlide(currentSlide + 1); }
+function prevSlide() { showSlide(currentSlide - 1); }
+function startCarousel() {
+stopCarousel();
+intervalId = setInterval(nextSlide, slideIntervalTime);
+isAuto = true;
+updateAutoBtn();
+}
+function stopCarousel() {
+if (intervalId) clearInterval(intervalId);
+intervalId = null;
+isAuto = false;
+updateAutoBtn();
+}
+function setAutoplay(active) {
+isAuto = active;
+if (isAuto) {
     startCarousel();
-
-    // Leitor de tela //
-    function speakText(text) {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const utter = new window.SpeechSynthesisUtterance(text);
-    utter.lang = 'pt-BR';
-    utter.rate = 1.05;
-    window.speechSynthesis.speak(utter);
-    }
-
-    document.getElementById('lerTudo').addEventListener('click', () => {
-    let texto = '';
-    texto += document.querySelector('.biography-box h2').innerText + '. ';
-    document.querySelectorAll('.biography-box p').forEach(p => { texto += p.innerText + ' '; });
-    texto += 'Fotos: ';
-    images.forEach((img, i) => { texto += `Foto ${i + 1}: ${img.alt}. `; });
-    speakText(texto);
+    speakText('Carrossel automático ativado');
+} else {
+    stopCarousel();
+    speakText('Carrossel automático desativado');
+}
+}
+autoBtn.addEventListener('click', () => {
+setAutoplay(!isAuto);
+});
+autoBtn.addEventListener('keydown', (e) => {
+if (e.key === 'Enter' || e.key === ' ') setAutoplay(!isAuto);
+});
+function createDots() {
+dotsContainer.innerHTML = '';
+for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    dot.setAttribute('role', 'button');
+    dot.setAttribute('aria-label', `Ir para foto ${i + 1}`);
+    dot.setAttribute('tabindex', '0');
+    dot.addEventListener('click', () => {
+    showSlide(i);
+    setAutoplay(false);
     });
-
-    // Formulário de História (envio simulado) //
-    const formHistoria = document.getElementById('formHistoria');
-    const formMsg = document.getElementById('formMsg');
-    formHistoria.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const nome = formHistoria.nome.value.trim();
-    const historia = formHistoria.historia.value.trim();
-    if (nome.length < 2) {
-        formMsg.textContent = "Por favor, digite um nome válido.";
-        formMsg.style.display = "block";
-        return;
+    dot.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        showSlide(i);
+        setAutoplay(false);
     }
+    });
+    dotsContainer.appendChild(dot);
+}
+updateDots();
+}
+function updateDots() {
+const dots = document.querySelectorAll('.dot');
+dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+}
+prevButton.addEventListener('click', () => { prevSlide(); setAutoplay(false); });
+nextButton.addEventListener('click', () => { nextSlide(); setAutoplay(false); });
+document.querySelector('.carousel-container').addEventListener('keydown', (e) => {
+if (e.key === 'ArrowLeft') { prevSlide(); setAutoplay(false); }
+if (e.key === 'ArrowRight') { nextSlide(); setAutoplay(false); }
+if (e.key === ' ') { setAutoplay(false); }
+});
+createDots();
+showSlide(0);
+setAutoplay(true);
 
-    if (historia.length < 5) {
-        formMsg.textContent = "Por favor, escreva uma mensagem maior.";
-        formMsg.style.display = "block";
-        return;
-    }
+// Leitor de tela //
+function speakText(text) {
+if (!window.speechSynthesis) return;
+window.speechSynthesis.cancel();
+const utter = new window.SpeechSynthesisUtterance(text);
+utter.lang = 'pt-BR';
+utter.rate = 1.05;
+window.speechSynthesis.speak(utter);
+}
+document.getElementById('lerTudo').addEventListener('click', () => {
+let texto = '';
+texto += document.querySelector('.biography-box h2').innerText + '. ';
+document.querySelectorAll('.biography-box p').forEach(p => { texto += p.innerText + ' '; });
+texto += 'Fotos: ';
+images.forEach((img, i) => { texto += `Foto ${i + 1}: ${img.alt}. `; });
+speakText(texto);
+});
 
-    formMsg.textContent = "História enviada com sucesso! Obrigado por compartilhar.";
+// Formulário de História (envio simulado) //
+const formHistoria = document.getElementById('formHistoria');
+const formMsg = document.getElementById('formMsg');
+formHistoria.addEventListener('submit', function(e) {
+e.preventDefault();
+const nome = formHistoria.nome.value.trim();
+const historia = formHistoria.historia.value.trim();
+if (nome.length < 2) {
+    formMsg.textContent = "Por favor, digite um nome válido.";
     formMsg.style.display = "block";
-    formHistoria.reset();
-    setTimeout(() => { formMsg.style.display = "none"; }, 3200);
-    });
+    return;
+}
+if (historia.length < 5) {
+    formMsg.textContent = "Por favor, escreva uma mensagem maior.";
+    formMsg.style.display = "block";
+    return;
+}
+formMsg.textContent = "História enviada com sucesso! Obrigado por compartilhar.";
+formMsg.style.display = "block";
+formHistoria.reset();
+setTimeout(() => { formMsg.style.display = "none"; }, 3200);
+});
 
+// Configuração de temas
+const settingsBtn = document.getElementById('settingsBtn');
+const settingsModal = document.getElementById('settingsModal');
+const closeSettings = document.getElementById('closeSettings');
+const themeLight = document.getElementById('themeLight');
+const themeDark = document.getElementById('themeDark');
+const themeDaltonic = document.getElementById('themeDaltonic');
+const themeProtanopia = document.getElementById('themeProtanopia');
+const themeDeuteranopia = document.getElementById('themeDeuteranopia');
+const themeTritanopia = document.getElementById('themeTritanopia');
+const themeDefault = document.getElementById('themeDefault');
+const themeBtns = [themeLight, themeDark, themeDaltonic, themeProtanopia, themeDeuteranopia, themeTritanopia, themeDefault];
+
+function setTheme(theme) {
+    document.body.classList.remove(
+        'theme-dark',
+        'theme-daltonic',
+        'theme-light',
+        'theme-protanopia',
+        'theme-deuteranopia',
+        'theme-tritanopia'
+    );
+    themeBtns.forEach(btn => btn.classList.remove('active'));
+    if (theme === 'light') {
+        document.body.classList.add('theme-light');
+        themeLight.classList.add('active');
+        localStorage.setItem('siteTheme', 'light');
+    } else if (theme === 'dark') {
+        document.body.classList.add('theme-dark');
+        themeDark.classList.add('active');
+        localStorage.setItem('siteTheme', 'dark');
+    } else if (theme === 'daltonic') {
+        document.body.classList.add('theme-daltonic');
+        themeDaltonic.classList.add('active');
+        localStorage.setItem('siteTheme', 'daltonic');
+    } else if (theme === 'protanopia') {
+        document.body.classList.add('theme-protanopia');
+        themeProtanopia.classList.add('active');
+        localStorage.setItem('siteTheme', 'protanopia');
+    } else if (theme === 'deuteranopia') {
+        document.body.classList.add('theme-deuteranopia');
+        themeDeuteranopia.classList.add('active');
+        localStorage.setItem('siteTheme', 'deuteranopia');
+    } else if (theme === 'tritanopia') {
+        document.body.classList.add('theme-tritanopia');
+        themeTritanopia.classList.add('active');
+        localStorage.setItem('siteTheme', 'tritanopia');
+    } else {
+        themeDefault.classList.add('active');
+        localStorage.removeItem('siteTheme');
+    }
+}
+settingsBtn.addEventListener('click', () => {
+    settingsModal.classList.toggle('show');
+    settingsModal.focus();
+});
+settingsBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        settingsModal.classList.toggle('show');
+        settingsModal.focus();
+    }
+});
+closeSettings.addEventListener('click', () => {
+    settingsModal.classList.remove('show');
+});
+closeSettings.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        settingsModal.classList.remove('show');
+    }
+});
+themeLight.addEventListener('click', () => setTheme('light'));
+themeDark.addEventListener('click', () => setTheme('dark'));
+themeDaltonic.addEventListener('click', () => setTheme('daltonic'));
+themeProtanopia.addEventListener('click', () => setTheme('protanopia'));
+themeDeuteranopia.addEventListener('click', () => setTheme('deuteranopia'));
+themeTritanopia.addEventListener('click', () => setTheme('tritanopia'));
+themeDefault.addEventListener('click', () => setTheme('default'));
+
+// Carregar tema salvo
+(function() {
+    const savedTheme = localStorage.getItem('siteTheme');
+    if (savedTheme === 'dark') setTheme('dark');
+    else if (savedTheme === 'daltonic') setTheme('daltonic');
+    else if (savedTheme === 'protanopia') setTheme('protanopia');
+    else if (savedTheme === 'deuteranopia') setTheme('deuteranopia');
+    else if (savedTheme === 'tritanopia') setTheme('tritanopia');
+    else if (savedTheme === 'light') setTheme('light');
+    else setTheme('light');
+})();
+
+// Fechar modal clicando fora
+document.addEventListener('mousedown', function(e) {
+    if (settingsModal.classList.contains('show') && !settingsModal.contains(e.target) && e.target !== settingsBtn) {
+        settingsModal.classList.remove('show');
+    }
+});
+
+// Acessibilidade: fechar com ESC
+document.addEventListener('keydown', function(e) {
+    if (settingsModal.classList.contains('show') && e.key === "Escape") {
+        settingsModal.classList.remove('show');
+        settingsBtn.focus();
+    }
+});
+
+// Rolagem suave para âncoras do menu
+document.getElementById('linkBiografia').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('biografia').scrollIntoView({behavior: 'smooth'});
+});
+document.getElementById('linkFotos').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('carouselImgs').scrollIntoView({behavior: 'smooth'});
+});
+document.getElementById('linkFormulario').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('formulario').scrollIntoView({behavior: 'smooth'});
+});
 </script>
-
 <!-- VLibras Plugin -->
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
@@ -498,7 +922,6 @@
     <div class="vw-plugin-top-wrapper"></div>
     </div>
 </div>
-
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
